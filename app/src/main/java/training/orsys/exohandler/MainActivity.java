@@ -13,17 +13,19 @@ import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
-    private Handler handler;
+    private Handler handler = null;
+    private TextView tv1 = null;
+    private ProgressBar pb1 = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) { // thread UI, main thread
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ProgressBar pb1 = findViewById(R.id.progressBar1);
+        pb1 = findViewById(R.id.progressBar1);
         pb1.setVisibility(View.INVISIBLE);
 
-        final TextView tv1 = findViewById(R.id.champ_compteur);
+        tv1 = findViewById(R.id.champ_compteur);
         handler = new Handler() {
             @Override
             public void handleMessage(@NonNull Message msg) {
@@ -32,7 +34,6 @@ public class MainActivity extends AppCompatActivity {
                 tv1.setText(String.valueOf(msg.what));
 
                 if(msg.what == 9) {
-                    ProgressBar pb1 = findViewById(R.id.progressBar1);
                     pb1.setVisibility(View.INVISIBLE);
                     Button b1 = findViewById(R.id.button_start);
                     b1.setEnabled(true);
@@ -42,7 +43,6 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void clickButtonStart( View v ) { // thread UI
-        ProgressBar pb1 = findViewById(R.id.progressBar1);
         pb1.setVisibility(View.VISIBLE);
 
         Button b1 = findViewById(R.id.button_start);

@@ -3,7 +3,6 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
 
-
     defaultConfig {
         applicationId "training.orsys.exohandler"
         minSdkVersion 19
