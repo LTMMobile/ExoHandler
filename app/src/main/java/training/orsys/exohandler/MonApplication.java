@@ -7,7 +7,6 @@ public class MonApplication extends Application {
     @Override
     public void onCreate() { // point d'entrée
         super.onCreate();
-
         // init
     }
 }

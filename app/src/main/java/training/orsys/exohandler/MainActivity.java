@@ -3,6 +3,7 @@ package training.orsys.exohandler;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
 import android.os.Message;
@@ -17,6 +18,7 @@ public class MainActivity extends AppCompatActivity {
     private TextView tv1 = null;
     private ProgressBar pb1 = null;
 
+    @SuppressLint("HandlerLeak")
     @Override
     protected void onCreate(Bundle savedInstanceState) { // thread UI, main thread
         super.onCreate(savedInstanceState);
