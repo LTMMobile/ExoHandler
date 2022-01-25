@@ -13,7 +13,6 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
-
     private Handler handler = null;
     private TextView tv1 = null;
     private ProgressBar pb1 = null;
@@ -67,18 +66,3 @@ public class MainActivity extends AppCompatActivity {
         }
     }
 }
-
-       /*ProgressBar pb1 = findViewById(R.id.progressBar1);
-        pb1.setVisibility(View.VISIBLE);
-
-        TextView tv1 = findViewById(R.id.champ_compteur);
-        for( int t = 0; t < 10; t++ ) {
-            tv1.setText(String.valueOf(t+1));
-            try {
-                Thread.sleep(500);
-            } catch (InterruptedException e) {
-                e.printStackTrace();
-            }
-        }
-
-        pb1.setVisibility(View.INVISIBLE);*/
