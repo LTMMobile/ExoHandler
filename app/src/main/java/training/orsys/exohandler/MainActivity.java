@@ -41,13 +41,28 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
+
     }
 
-    public void clickButtonStart( View v ) { // thread UI
+    public void clickButtonStart( View v ) { // thread UI, main thread
         pb1.setVisibility(View.VISIBLE);
 
         Button b1 = findViewById(R.id.button_start);
         b1.setEnabled(false);
+
+        /*tv1 = findViewById(R.id.champ_compteur);
+        for( int t = 0; t < 10; t++ ) {
+            //tv1.setText(String.valueOf(t+1));
+            //handler.sendEmptyMessage(t);
+            try {
+                Thread.sleep(1000);
+                tv1.setText(String.valueOf(t));
+            } catch (InterruptedException e) {
+                e.printStackTrace();
+            }
+        }
+        pb1.setVisibility(View.INVISIBLE);
+        b1.setEnabled(true);*/
 
         new ThreadCompteur().start();
     }
