@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.annotation.SuppressLint;
 import android.os.Bundle;
 import android.os.Handler;
+import android.os.Looper;
 import android.os.Message;
 import android.view.View;
 import android.widget.Button;
@@ -27,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         pb1.setVisibility(View.INVISIBLE);
 
         tv1 = findViewById(R.id.champ_compteur);
-        handler = new Handler() {
+        handler = new Handler(Looper.myLooper()) {
             @Override
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
