@@ -2,6 +2,7 @@ package training.orsys.exohandler;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
+//import androidx.appcompat.FragmentActivity
 
 import android.annotation.SuppressLint;
 import android.os.Bundle;
@@ -34,7 +35,6 @@ public class MainActivity extends AppCompatActivity {
                 super.handleMessage(msg);
 
                 tv1.setText(String.valueOf(msg.what));
-
                 if(msg.what == 9) {
                     pb1.setVisibility(View.INVISIBLE);
                     Button b1 = findViewById(R.id.button_start);
