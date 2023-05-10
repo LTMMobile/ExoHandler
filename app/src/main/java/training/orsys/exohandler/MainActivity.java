@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity {
         pb1.setVisibility(View.INVISIBLE);
 
         tv1 = findViewById(R.id.champ_compteur);
+
         handler = new Handler(Looper.myLooper()) {
             @Override
             public void handleMessage(@NonNull Message msg) {
@@ -44,10 +45,8 @@ public class MainActivity extends AppCompatActivity {
         };
 
     }
-
     public void clickButtonStart( View v ) { // thread UI, main thread
         pb1.setVisibility(View.VISIBLE);
-
         Button b1 = findViewById(R.id.button_start);
         b1.setEnabled(false);
 
@@ -64,14 +63,13 @@ public class MainActivity extends AppCompatActivity {
         }
         pb1.setVisibility(View.INVISIBLE);
         b1.setEnabled(true);*/
-
         new ThreadCompteur().start();
     }
 
     class ThreadCompteur extends java.lang.Thread { // worker thread
         public void run() { // debut du thread
             for( int t = 0; t < 10; t++ ) {
-                //tv1.setText(String.valueOf(t+1));
+                //tv1.setText(String.valueOf(t+1)); // KO
                 handler.sendEmptyMessage(t);
                 try {
                     Thread.sleep(500);
