@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.os.Handler;
 import android.os.Looper;
 import android.os.Message;
+import android.view.MotionEvent;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ProgressBar;
@@ -27,14 +28,20 @@ public class MainActivity extends AppCompatActivity {
 
         pb1 = findViewById(R.id.progressBar1);
         pb1.setVisibility(View.INVISIBLE);
-
         tv1 = findViewById(R.id.champ_compteur);
 
-        handler = new Handler(Looper.myLooper()) {
+        /*Button btn = findViewById(R.id.button_start);
+        btn.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+            }
+        });*/
+
+        handler = new Handler(Looper.myLooper()) { // code inner
             @Override
             public void handleMessage(@NonNull Message msg) {
                 super.handleMessage(msg);
-
                 tv1.setText(String.valueOf(msg.what));
                 if(msg.what == 9) {
                     pb1.setVisibility(View.INVISIBLE);
@@ -43,8 +50,24 @@ public class MainActivity extends AppCompatActivity {
                 }
             }
         };
-
     }
+
+    // inner class
+    class ThreadCompteur extends java.lang.Thread { // worker thread
+        public void run() { // debut du thread
+            for( int t = 0; t < 10; t++ ) {
+                //tv1.setText(String.valueOf(t+1)); // KO
+                handler.sendEmptyMessage(t); // img, java.lang
+                //handler.sendMessage(bmp)
+                try {
+                    Thread.sleep(500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        }
+    }
+    /*    */
     public void clickButtonStart( View v ) { // thread UI, main thread
         pb1.setVisibility(View.VISIBLE);
         Button b1 = findViewById(R.id.button_start);
@@ -66,17 +89,5 @@ public class MainActivity extends AppCompatActivity {
         new ThreadCompteur().start();
     }
 
-    class ThreadCompteur extends java.lang.Thread { // worker thread
-        public void run() { // debut du thread
-            for( int t = 0; t < 10; t++ ) {
-                //tv1.setText(String.valueOf(t+1)); // KO
-                handler.sendEmptyMessage(t);
-                try {
-                    Thread.sleep(500);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            }
-        }
-    }
+
 }
